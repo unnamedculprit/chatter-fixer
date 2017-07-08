@@ -1,15 +1,39 @@
 console.log("CHATTER ATTACHMENT FIXER RUNNING");
 
-attachments = document.getElementsByClassName("feeditemattachments");
-
-Array.from(attachments).forEach(function(a, i)
+post_attachments = document.getElementsByClassName("feeditemattachments");
+comments = document.getElementsByClassName("feeditemcommentbody");
+var comment_attachments = [];
+Array.from(comments).forEach(function(a)
 {
+	att = a.getElementsByClassName("contentPost")
+	if( att.length >0 )
+	{
+		//console.log("comment: ", a, att);
+		comment_attachments.push(att[0]);
+	}
+});
+//console.log("post att", post_attachments);
+//console.log("comm att", comment_attachments);
+
+attachments = Array.from(post_attachments).concat(comment_attachments);
+
+//console.log("attac", attachments);
+
+attachments.forEach(function(a, i)
+{
+	//console.log("Got Attachment: ", Object.prototype.toString.call(a), a);
+	
 	title_element = a.getElementsByClassName("contentTitleLink")[0];
 	link_element = a.getElementsByClassName("contentActionLink")[1];
+	
+	//console.log("title/link elements: ", title_element, link_element);
+	
 	if(title_element && link_element)
 	{
 		title = title_element.textContent;
 		link = link_element.href;
+		
+		//console.log("Got Title/Link: ", title, link); 
 		
 		// see if there's a thumbnail. otherwise give up
 		if(thumb_element = a.getElementsByClassName("contentThumbnail")[0])
@@ -24,7 +48,9 @@ Array.from(attachments).forEach(function(a, i)
 			thumb.cid = p["contentId"];
 			thumb.vid = p["versionId"];
 			thumb.imageurl = "https://thisisglobal--c.eu7.content.force.com/sfc/servlet.shepherd/version/renditionDownload?rendition=THUMB720BY480&versionId="+ thumb.vid +"&operationContext=CHATTER&contentId="+ thumb.cid;
-						
+			
+			//console.log("got thumb: ", thumb);
+				
 			if(thumb && thumb.url.includes("doctype_video"))
 			{
 				//it's a video
@@ -38,10 +64,10 @@ Array.from(attachments).forEach(function(a, i)
 				extraTableRow(a, "<audio width='100%' preload='metadata' controls><source src='"+link+"'></audio>");
 
 			}
-			else if(a.getElementsByClassName("previewHover"))
+			else if(thumb && thumb.url.includes("renditionDownload"))
 			{
 				//assume its an image
-				//console.log("PREVIEWABLE ITEM: ", thumb, title, link);
+				console.log("PREVIEWABLE ITEM: ", title, thumb, link);
 				html = "<a href='"+thumb.imageurl+"'>";
 				html += "<img src='"+thumb.imageurl+"' alt='"+ title +"' width='100%'>";
 				html += "</a>";
@@ -50,6 +76,14 @@ Array.from(attachments).forEach(function(a, i)
 			else
 				console.log("ITEM: ", title.textContent, link.href);
 		}
+		else
+		{
+			console.log("no thumb element");
+		}
+	}
+	else
+	{
+		//console.log("no title_element && link_element", a);
 	}
 	
 });
@@ -79,9 +113,16 @@ function extraTableRow(attachment, html)
 	a = attachment;
 	if(table = a.getElementsByClassName("contentPost")[0])
 	{
-		var row = table.insertRow(-1);
-		var cell1 = row.insertCell(0);
-		cell1.setAttribute("colspan","2")
-		cell1.innerHTML = html;
+		//woohoo
 	}
+	else
+	{
+		table = a;
+	}
+	
+	var row = table.insertRow(-1);
+	var cell1 = row.insertCell(0);
+	cell1.setAttribute("colspan","2")
+	cell1.innerHTML = html;
+
 }
