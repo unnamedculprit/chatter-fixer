@@ -1,0 +1,15 @@
+{
+  "manifest_version": 2,
+ 
+  "name": "Chatter Attachment Fixer",
+  "version": "0.1.0",
+  "description": "Attempts to display Chatter attachments in the page, rather than making you download them.",
+ 
+  "content_scripts": [{
+    "css": ["styles.css"],
+    "js": ["content.js"],
+    "matches": ["https://*.my.salesforce.com/*"],
+    "run_at": "document_idle"
+  }]
+ 
+}
