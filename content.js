@@ -35,7 +35,7 @@ Array.from(attachments).forEach(function(a, i)
 			{
 				//it's AUDIO
 				console.log("AUDIO: ", title, link);
-				extraTableRow(a, "<audio controls><source src='"+link+"'></audio>");
+				extraTableRow(a, "<audio width='100%' preload='metadata' controls><source src='"+link+"'></audio>");
 
 			}
 			else if(a.getElementsByClassName("previewHover"))
