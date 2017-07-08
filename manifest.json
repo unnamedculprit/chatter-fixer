@@ -10,6 +10,10 @@
     "js": ["content.js"],
     "matches": ["https://*.my.salesforce.com/*"],
     "run_at": "document_idle"
-  }]
+  }],
+  
+  "icons": { "16": "chatterfix16.png",
+           "48": "chatterfix48.png",
+          "128": "chatterfix128.png" }
  
 }
