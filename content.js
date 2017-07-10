@@ -125,7 +125,7 @@ function fixPostArray(attachments, num_attachments)
 				title = title_element.textContent;
 				link = link_element.href;
 				
-				console.log("Fixing:", post_counter, num_attachments, title);
+				//console.log("Fixing:", post_counter, num_attachments, title);
 
 				// see if there's a thumbnail. otherwise give up
 				if(thumb_element = a.getElementsByClassName("contentThumbnail")[0])
@@ -182,10 +182,10 @@ function fixPostArray(attachments, num_attachments)
 		}	
 		else
 		{
-			if(title_element = a.getElementsByClassName("contentTitleLink")[0])
-				console.log("We've already done this post.", post_counter, num_attachments, title_element.textContent);
-			else
-				console.log("We've already done this post.", post_counter, num_attachments);
+			//if(title_element = a.getElementsByClassName("contentTitleLink")[0])
+			//	console.log("We've already done this post.", post_counter, num_attachments, title_element.textContent);
+			//else
+			//	console.log("We've already done this post.", post_counter, num_attachments);
 		}
 		
 		post_counter++;
