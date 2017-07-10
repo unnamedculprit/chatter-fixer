@@ -2,7 +2,7 @@
   "manifest_version": 2,
  
   "name": "Chatter Attachment Fixer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Attempts to display Chatter attachments in the page, rather than making you download them.",
  
   "content_scripts": [{
