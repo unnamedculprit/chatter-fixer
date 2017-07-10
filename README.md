@@ -9,3 +9,9 @@ This has barely been tested, and only on *.my.salesforce.com. My salesforce acco
 1. In Chrome, open chrome://extensions/
 1. Drag the unzipped folder into the chrome extensions window. This should install it.
 1. Visit a Chatter page. You should now see larger image previews, and embedded video/audio players for multimedia attachments.
+
+# Support
+I have no plans to support or update this.
+
+## Known Issues
+* Only applies changes to first "page" of posts on infinite-scrolling pages
