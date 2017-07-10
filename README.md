@@ -12,6 +12,3 @@ This has barely been tested, and only on *.my.salesforce.com. My salesforce acco
 
 # Support
 I have no plans to support or update this.
-
-## Known Issues
-* Only applies changes to first "page" of posts on infinite-scrolling pages
