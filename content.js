@@ -147,6 +147,12 @@ function fixPostArray(attachments, num_attachments)
 						//console.log("VIDEO: ", title, link);
 						extraTableRow(a, "<video width='100%' preload='metadata' controls><source src='"+link+"'></video>");
 					}
+					else if(thumb && thumb.url.includes("doctype_mp4"))
+					{
+						//it's a video. create a player
+						//console.log("VIDEO: ", title, link);
+						extraTableRow(a, "<video width='100%' preload='metadata' controls><source src='"+link+"'></video>");
+					}
 					else if(thumb && thumb.url.includes("doctype_audio"))
 					{
 						//it's audio. create a player
